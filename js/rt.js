@@ -58,4 +58,12 @@ function frBangorHarvardC() {
 
 function displayReference() {
 	document.getElementById('formattedReference').innerHTML = finalReference;
+	document.getElementById('formattedReference').value = finalReference;
+	
+	var clip = new Clipboard('.copyBtn');
+	
+	clip.on('success', function(e) {
+		$('.copied').show();
+			$('.copied').fadeOut(1000);
+	});
 }
