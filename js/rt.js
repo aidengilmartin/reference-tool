@@ -2,28 +2,35 @@ var authorOrg, dateCreated, dateAccessed, titleOfSite, titleOfDoc, referenceURL,
 
 var sep = ". ";
 
+var selectedRefType;
+
 function formSubmission() {
 	collectDetails()
-	getReferenceType();
+	selectReferenceType();
+	doReferencing();
 	displayReference();
 	copyRefToClipboard();
 }
 
-function getReferenceType() {
+function selectReferenceType() {
 	var selector = document.getElementById("referenceType");
-	var selectedRefType = selector[selector.selectedIndex].value;
+	selectedRefType = selector[selector.selectedIndex].value;
+}
 
+function refTypeChanged() {
+	formSubmission();
+	adjustElements();
+}
+
+function doReferencing() {
 	if (selectedRefType == "bhA") {
 		frBangorHarvardA();
-		console.log(selectedRefType);
 	} 
 	if (selectedRefType == "bhB") {
 		frBangorHarvardB();
-		console.log(selectedRefType);
 	}
 	if (selectedRefType == "bhC") {
 		frBangorHarvardC();
-		console.log(selectedRefType);
 	}
 }
 
@@ -54,19 +61,72 @@ function frBangorHarvardB() {
 }
 
 function frBangorHarvardC() {
-	finalReference = authorOrg + sep + dateCreated + sep + titleOfDoc +sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalReference = authorOrg + sep + dateCreated + sep + titleOfDoc + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
 }
 
 function displayReference() {
 	document.getElementById('formattedReference').innerHTML = finalReference;
-	document.getElementById('formattedReference').value = finalReference;
 }
 
 function copyRefToClipboard() {
+	document.getElementById('formattedReference').value = finalReference;
 	var clip = new Clipboard('.copyBtn');
 	
 	clip.on('success', function(e) {
 		$('.copied').show();
 			$('.copied').fadeOut(1000);
 	});
+}
+
+function adjustElements() {
+	if (selectedRefType == "bhA") {
+		hideNonCommonElements();
+
+		commonElementsShow();
+	} 
+	if (selectedRefType == "bhB") {
+		hideNonCommonElements();
+
+		commonElementsShow();
+		bhbElementsShow();
+	} 
+	if (selectedRefType == "bhC") {
+		hideNonCommonElements();
+
+		commonElementsShow();
+		bhbElementsShow();
+		bhcElementsShow();
+	} 
+}
+
+function commonElementsShow() {
+	showContent("dateCreated", "referenceURL", "dateAccessed", "titleOfSite");
+}
+
+function bhbElementsShow() {
+	showContent("authorOrg", "titleOfSite");
+}
+
+function bhcElementsShow() {
+	showContent("titleOfDoc");
+}
+
+function hideNonCommonElements() {
+	hideContent("authorOrg", "titleOfSite", "titleOfDoc");
+}
+
+function hideContent() {
+	if (arguments.length > 0) {
+    	for (var i=0; i < arguments.length; i++) {
+			document.getElementById(arguments[i]).style.display = "none";
+		}
+	} 
+}
+
+function showContent() {
+	if (arguments.length > 0) {
+		for (var i=0; i < arguments.length; i++) {
+			document.getElementById(arguments[i]).style.display = "block";
+		}
+	}
 }

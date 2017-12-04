@@ -35,7 +35,7 @@
 				<fieldset>
 				
 				<label for="referenceType">Reference Type</label>
-				<select id="referenceType">
+				<select id="referenceType" onchange="refTypeChanged();">
 					<option value="bhA">Website without author</option>
 					<option value="bhB">Websites with author or organisation</option>
 					<option value="bhC">Document on website</option>
@@ -52,6 +52,7 @@
 				<a class="button" onclick="formSubmission();" type="button">Create</a>
 				<a class="button" onclick="formClear();" type="button">Clear All</a>
 				<a class="button copyBtn" data-clipboard-target="#formattedReference" type="button">Copy to Clipboard</a>
+				<a class="button copyBtn" onclick="hideNonCommonElements();" type="button">Hide all elements</a>
 				
 			</fieldset>
 
