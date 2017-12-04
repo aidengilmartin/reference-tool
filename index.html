@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Reference Tool</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Resources -->
+		<!-- Google Fonts -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+		<!-- CSS Reset -->
+		<link rel="stylesheet" href="css/normalize.css">
+		<!-- Milligram -->
+		<link rel="stylesheet" type="text/css" href="css/milligram.css">
+		<!-- Custom CSS Stylesheet -->
+		<link rel="stylesheet" type="text/css" href="css/customstyle.css">
+		<!-- JS -->
+		<script type="text/javascript" src="js/rt.js"></script>
+	<!-- Resources -->
+</head>
+<body onload="">
+
+<section class="referenceTool widthMax">
+
+	<h1>Reference Tool</h1>
+	<a href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to Bangor guide this site follows</a>
+	<br></br>
+	
+	<h3>Details</h3>
+	
+	<form>
+	  <fieldset>
+		<label for="referenceType">Reference Type</label>
+		<select id="referenceType">
+			<option value="webAuthOrg">Website without author</option>
+			<option value="webAuthOrg">Websites with author or organisation</option>
+			<option value="webAuthOrg">Document on Website</option>
+		</select>
+		<label>Details</label>
+		<textarea placeholder="Author or Organzation" id="authorOrg"></textarea>
+		<textarea placeholder="Date Created" id="dateCreated"></textarea>
+		<textarea placeholder="Title of Website" id="titleOfSite"></textarea>
+		<textarea placeholder="Link (URL)" id="referenceURL"></textarea>
+		<textarea placeholder="Date accessed (4th December 2017)" id="dateAccessed"></textarea>
+		
+		<a class="button" onclick="formSubmission();" type="button">Create</a>
+	  </fieldset>
+	</form>
+	
+	<h3>Completed Reference</h3>
+	
+	<textarea id="formattedReference"></textarea>
+
+</section>
+
+</body>
+</html>
