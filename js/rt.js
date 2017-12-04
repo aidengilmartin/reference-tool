@@ -3,11 +3,8 @@ var authorOrg, dateCreated, dateAccessed, titleOfSite, titleOfDoc, referenceURL,
 var sep = ". ";
 
 function formSubmission() {
-	
-	collectDetails();
-
+	collectDetails()
 	getReferenceType();
-
 	displayReference();
 }
 
@@ -39,14 +36,12 @@ function collectDetails() {
 }
 
 function formClear() {
-
 	if (confirm("Are you sure?") == true) {
 		document.getElementById("refForm").reset();
 		document.getElementById("formattedReference").innerText = "";
 	} else {
 		// Do nothing
-	}
-	 
+	} 
 }
 
 function frBangorHarvardA() {
