@@ -1,31 +1,64 @@
-var authorOrg, dateCreated, titleOfSite, referenceURL, dateAccessed
-var sep = ". ";
-var online = "[Online]";
-var avAt = "Available at: ";
-var acc = "Accessed ";
-var dateCreated = "2017";
-var titleOfSite = "Google is adding Kotlin as an official programming language for Android development"
-var referenceURL = "https://www.theverge.com/2017/5/17/15654988/google-jet-brains-kotlin-programming-language-android-development-io-2017";
-var dateAccessed = "29th November 2017";
+var authorOrg, dateCreated, dateAccessed, titleOfSite, titleOfDoc, referenceURL, finalReference;
 
-var finalReference = "";
+var sep = ". ";
 
 function formSubmission() {
+	
 	collectDetails();
-	frBangorHarvardB();
+
+	getReferenceType();
+
 	displayReference();
+}
+
+function getReferenceType() {
+	var selector = document.getElementById("referenceType");
+	var selectedRefType = selector[selector.selectedIndex].value;
+
+	if (selectedRefType == "bhA") {
+		frBangorHarvardA();
+		console.log(selectedRefType);
+	} 
+	if (selectedRefType == "bhB") {
+		frBangorHarvardB();
+		console.log(selectedRefType);
+	}
+	if (selectedRefType == "bhC") {
+		frBangorHarvardC();
+		console.log(selectedRefType);
+	}
 }
 
 function collectDetails() {
 	authorOrg = document.getElementById("authorOrg").value;
 	dateCreated = document.getElementById("dateCreated").value;
-	titleOfSite = document.getElementById("titleOfSite").value;
-	referenceURL = document.getElementById("referenceURL").value;
 	dateAccessed = document.getElementById("dateAccessed").value;
+	titleOfSite = document.getElementById("titleOfSite").value;
+	titleOfDoc = document.getElementById("titleOfDoc").value;
+	referenceURL = document.getElementById("referenceURL").value;
+}
+
+function formClear() {
+
+	if (confirm("Are you sure?") == true) {
+		document.getElementById("refForm").reset();
+		document.getElementById("formattedReference").innerText = "";
+	} else {
+		// Do nothing
+	}
+	 
+}
+
+function frBangorHarvardA() {
+	finalReference = titleOfSite + sep + dateCreated + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
 }
 
 function frBangorHarvardB() {
-	finalReference = authorOrg + sep + dateCreated + sep + titleOfSite + sep + online + sep + avAt + referenceURL + sep + acc + dateAccessed + ".";
+	finalReference = authorOrg + sep + dateCreated + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+}
+
+function frBangorHarvardC() {
+	finalReference = authorOrg + sep + dateCreated + sep + titleOfDoc +sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
 }
 
 function displayReference() {
