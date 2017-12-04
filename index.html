@@ -1,66 +1,67 @@
 <!DOCTYPE HTML>
+
 <html lang="en">
-<head>
-	<title>Reference Tool</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- Resources -->
-		<!-- Google Fonts -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
-		<!-- CSS Reset -->
-		<link rel="stylesheet" href="css/normalize.css">
-		<!-- Milligram -->
-		<link rel="stylesheet" type="text/css" href="css/milligram.css">
-		<!-- Custom CSS Stylesheet -->
-		<link rel="stylesheet" type="text/css" href="css/customstyle.css">
-		<!-- JS -->
-		<script type="text/javascript" src="js/clipboard.min.js"></script> <!--https://github.com/zenorocha/clipboard.js-->
-		<script type="text/javascript" src="js/rt.js"></script>
-	<!-- Resources -->
-</head>
-<body onload="">
 
-<section class="referenceTool widthMax">
+	<head>
+		<title>Reference Tool</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="UTF-8">
+		<!-- Resources -->
+			<!-- Google Fonts -->
+			<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+			<!-- CSS Reset -->
+			<link rel="stylesheet" href="css/normalize.css">
+			<!-- Milligram -->
+			<link rel="stylesheet" type="text/css" href="css/milligram.css">
+			<!-- Custom CSS Stylesheet -->
+			<link rel="stylesheet" type="text/css" href="css/customstyle.css">
+			<!-- JS -->
+			<script type="text/javascript" src="js/clipboard.min.js"></script> <!--https://github.com/zenorocha/clipboard.js-->
+			<script type="text/javascript" src="js/rt.js"></script>
+	</head>
 
-	<h1>Reference Tool</h1>
-	<a href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to Bangor guide this site follows</a>
-	<br></br>
-	
-	<h3>Details</h3>
-	
-	<form id="refForm" spellcheck="false">
-	  
-		<fieldset>
-		
-		<label for="referenceType">Reference Type</label>
-		
-		<select id="referenceType">
-			<option value="bhA">Website without author</option>
-			<option value="bhB">Websites with author or organisation</option>
-			<option value="bhC">Document on website</option>
-		</select>
+	<body>
 
-		<label>Details</label>
+		<section class="referenceTool widthMax">
 
-		<textarea placeholder="Title of Website" id="titleOfSite"></textarea>
-		<textarea placeholder="Title of Document" id="titleOfDoc"></textarea>
-		<textarea placeholder="Author or Organzation" id="authorOrg"></textarea>
-		<textarea placeholder="Date Created" id="dateCreated"></textarea>
-		<textarea placeholder="Date accessed" id="dateAccessed"></textarea>
-		<textarea placeholder="Link (URL)" id="referenceURL"></textarea>
-		
-		<a class="button" onclick="formSubmission();" type="button">Create</a>
-		<a class="button" onclick="formClear();" type="button">Clear All</a>
-		<a class="button copyBtn" data-clipboard-target="#formattedReference" type="button">Copy to Clipboard</a>
-		
-	</fieldset>
+			<h1>Reference Tool</h1>
+			<a href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to Bangor guide this site follows</a>
+			<br></br>
+			
+			<h3>Details</h3>
+			
+			<form id="refForm" spellcheck="false">
+			  
+				<fieldset>
+				
+				<label for="referenceType">Reference Type</label>
+				<select id="referenceType">
+					<option value="bhA">Website without author</option>
+					<option value="bhB">Websites with author or organisation</option>
+					<option value="bhC">Document on website</option>
+				</select>
 
-	</form>
+				<label>Details</label>
+				<textarea placeholder="Title of Website" id="titleOfSite"></textarea>
+				<textarea placeholder="Title of Document" id="titleOfDoc"></textarea>
+				<textarea placeholder="Author or Organzation" id="authorOrg"></textarea>
+				<textarea placeholder="Date Created" id="dateCreated"></textarea>
+				<textarea placeholder="Date accessed" id="dateAccessed"></textarea>
+				<textarea placeholder="Link (URL)" id="referenceURL"></textarea>
+				
+				<a class="button" onclick="formSubmission();" type="button">Create</a>
+				<a class="button" onclick="formClear();" type="button">Clear All</a>
+				<a class="button copyBtn" data-clipboard-target="#formattedReference" type="button">Copy to Clipboard</a>
+				
+			</fieldset>
 
-	<h3>Completed Reference</h3>
-	
-	<textarea id="formattedReference"></textarea>
+			</form>
 
-</section>
+			<h3>Completed Reference</h3>
+			<textarea id="formattedReference"></textarea>
 
-</body>
+		</section>
+
+	</body>
+
 </html>
