@@ -46,7 +46,7 @@ function collectDetails() {
 function formClear() {
 	if (confirm("Are you sure?") == true) {
 		document.getElementById("refForm").reset();
-		document.getElementById("formattedReference").innerText = "";
+		document.getElementById("formattedReference").value = "";
 	} else {
 		// Do nothing
 	} 
