@@ -6,6 +6,7 @@ function formSubmission() {
 	collectDetails()
 	getReferenceType();
 	displayReference();
+	copyRefToClipboard();
 }
 
 function getReferenceType() {
@@ -59,7 +60,9 @@ function frBangorHarvardC() {
 function displayReference() {
 	document.getElementById('formattedReference').innerHTML = finalReference;
 	document.getElementById('formattedReference').value = finalReference;
-	
+}
+
+function copyRefToClipboard() {
 	var clip = new Clipboard('.copyBtn');
 	
 	clip.on('success', function(e) {
