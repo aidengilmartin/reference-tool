@@ -18,13 +18,13 @@
 			<script type="text/javascript" src="js/rt.js"></script> 
 	</head>
 
-	<body class="main" onload="formLoad();">
+	<body class="main" onload="formLoad();" spellcheck="false">
 
 		<section class="toolContainer">
 
 			<h1>Reference Tool</h1>
 			
-			<form id="refForm" spellcheck="false" onchange="formSubmission();">
+			<form id="refForm" onchange="formSubmission();">
 			  
 			<fieldset>
 				
@@ -59,8 +59,7 @@
 
 			</form>
 
-			<h3>Completed Reference</h3>
-			<textarea id="formattedReference"></textarea>
+			<input type="text" placeholder="Completed Reference" id="formattedReference"></input>
 
 		</section>
 
