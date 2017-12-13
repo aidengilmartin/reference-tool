@@ -9,10 +9,13 @@
 		<!-- Resources -->
 			<!-- CSS -->
 			<link rel="stylesheet" type="text/css" href="css/milligram.min.css">
+			<!--<link rel="stylesheet" type="text/css" href="css/datepicker.min.css">-->
 			<link rel="stylesheet" type="text/css" href="css/custom.css">
 			<!-- JS -->
+			<!--<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>--> <!--https://jquery.com/download/-->
 			<script type="text/javascript" src="js/clipboard.min.js"></script> <!--https://github.com/zenorocha/clipboard.js-->
-			<script type="text/javascript" src="js/rt.js"></script>
+			<!--<script type="text/javascript" src="js/datepicker.min.js"></script>--> <!--https://github.com/fengyuanchen/datepicker-->
+			<script type="text/javascript" src="js/rt.js"></script> 
 	</head>
 
 	<body class="main" onload="formLoad();">
@@ -36,9 +39,16 @@
 				<input type="text" placeholder="Title of Website" id="titleOfSite"></input>
 				<input type="text" placeholder="Title of Document" id="titleOfDoc"></input>
 				<input type="text" placeholder="Author or Organzation" id="authorOrg"></input>
-				<input type="text" placeholder="Date Created" id="dateCreated"></input>
-				<input type="text" placeholder="Date accessed" id="dateAccessed"></input>
-				<input type="text" placeholder="Link (URL)" id="referenceURL"></input>
+				<input type="text" placeholder="Year Created" id="yearCreated"></input>
+				
+				<div class="row">
+					<!--<a class="button" onclick="pickDateAccessed();">Pick Date</a>-->
+					<input class="float-left" style="margin-left: 1%" type="text" placeholder="Date accessed" id="dateAccessed"></input>
+					<a class="button float-right" style="margin: 1%" onclick="pickDateAccessedToday();">Today</a>
+				</div>
+				
+
+				<input type="text" placeholder="URL (https://domain.com/page)" id="referenceURL"></input>
 				
 				<a class="button" onclick="formSubmission();" type="button">Create</a>
 				<a class="button" onclick="formClear();" type="button">Clear All</a>

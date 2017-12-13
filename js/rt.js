@@ -1,4 +1,4 @@
-var authorOrg, dateCreated, dateAccessed, titleOfSite, titleOfDoc, referenceURL, finalReference;
+var authorOrg, yearCreated, dateAccessed, titleOfSite, titleOfDoc, referenceURL, finalReference;
 
 var sep = ". ";
 
@@ -14,7 +14,7 @@ function formSubmission() {
 
 function collectDetails() {
 	authorOrg = document.getElementById("authorOrg").value;
-	dateCreated = document.getElementById("dateCreated").value;
+	yearCreated = document.getElementById("yearCreated").value;
 	dateAccessed = document.getElementById("dateAccessed").value;
 	titleOfSite = document.getElementById("titleOfSite").value;
 	titleOfDoc = document.getElementById("titleOfDoc").value;
@@ -68,21 +68,22 @@ function formClear() {
 
 function formLoad() {
 	selectReferenceType();
+	pickDateAccessedToday();
 	adjustElements();
 }
 
 // Referencing formats
 
 function frBangorHarvardA() {
-	finalReference = titleOfSite + sep + dateCreated + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalReference = titleOfSite + sep + yearCreated + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
 }
 
 function frBangorHarvardB() {
-	finalReference = authorOrg + sep + dateCreated + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalReference = authorOrg + sep + yearCreated + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
 }
 
 function frBangorHarvardC() {
-	finalReference = authorOrg + sep + dateCreated + sep + titleOfDoc + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalReference = authorOrg + sep + yearCreated + sep + titleOfDoc + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
 }
 
 // Element showing and hiding
@@ -109,7 +110,7 @@ function adjustElements() {
 }
 
 function commonElementsShow() {
-	showContent("dateCreated", "referenceURL", "dateAccessed", "titleOfSite");
+	showContent("yearCreated", "referenceURL", "dateAccessed", "titleOfSite");
 }
 
 function bhbElementsShow() {
@@ -138,4 +139,37 @@ function showContent() { // Function for showing elements by ID such as "showCon
 			document.getElementById(arguments[i]).style.display = "block";
 		}
 	}
+}
+
+// Date Picker
+
+function pickYearCreated() {
+	window.alert("This feature is not yet available, sorry!");
+	console.log("Error: No date picker available");
+}
+
+function pickDateAccessed() {
+	window.alert("This feature is not yet available, sorry!");
+	console.log("Error: No date picker available");
+}
+
+function pickDateAccessedToday() {
+	var date = new Date();
+	var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+	var theDay = date.getDate();
+	var theMonth = months[date.getMonth()];
+	var theYear = date.getFullYear();
+
+	function nth(d) {
+		if(d>3 && d<21) return 'th';
+		switch (d % 10) {
+			case 1:  return "st";
+			case 2:  return "nd";
+			case 3:  return "rd";
+			default: return "th";
+		}
+	}	
+	
+	document.getElementById("dateAccessed").value = theDay + nth(theDay) + " " + theMonth + " " + theYear;
 }
