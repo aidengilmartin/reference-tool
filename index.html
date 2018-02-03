@@ -7,61 +7,55 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="UTF-8">
 		<!-- Resources -->
-			<!-- CSS -->
-			<link rel="stylesheet" type="text/css" href="css/milligram.min.css">
-			<!--<link rel="stylesheet" type="text/css" href="css/datepicker.min.css">-->
-			<link rel="stylesheet" type="text/css" href="css/custom.css">
-			<!-- JS -->
-			<!--<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>--> <!--https://jquery.com/download/-->
-			<script type="text/javascript" src="js/clipboard.min.js"></script> <!--https://github.com/zenorocha/clipboard.js-->
-			<!--<script type="text/javascript" src="js/datepicker.min.js"></script>--> <!--https://github.com/fengyuanchen/datepicker-->
-			<script type="text/javascript" src="js/rt.js"></script> 
+		<!-- CSS -->
+		<link href="css/normalize.css" rel="stylesheet" type="text/css">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+		<!-- JS -->
+		<script type="text/javascript" src="js/clipboard.min.js"></script> <!--https://github.com/zenorocha/clipboard.js-->
+		<script type="text/javascript" src="js/rt.js"></script> 	
 	</head>
 
-	<body class="main" onload="formLoad();" spellcheck="false">
+	<body onload="formLoad();">
 
-		<section class="toolContainer">
+		<div class="page">
 
-			<h1>Reference Tool</h1>
-			
-			<form id="refForm" onchange="formSubmission();">
-			  
-			<fieldset>
-				
-				<label for="referenceType">Reference Type</label>
-				<select id="referenceType" onchange="refTypeChanged();">
-					<option value="bhA" selected>Website without author</option>
-					<option value="bhB">Websites with author or organisation</option>
-					<option value="bhC" >Document on website</option>
-				</select>
+			<form id="refForm" onchange="formChanged();">
 
-				<label>Details</label>
-				<input type="text" placeholder="Title of Website" id="titleOfSite"></input>
-				<input type="text" placeholder="Title of Document" id="titleOfDoc"></input>
-				<input type="text" placeholder="Author or Organzation" id="authorOrg"></input>
-				<input type="text" placeholder="Year Created" id="yearCreated"></input>
-				
-				<div class="row">
-					<!--<a class="button" onclick="pickDateAccessed();">Pick Date</a>-->
-					<input class="float-left" style="margin-left: 1%" type="text" placeholder="Date accessed" id="dateAccessed"></input>
-					<a class="button float-right" style="margin: 1%" onclick="pickDateAccessedToday();">Today</a>
+				<div class="attributes">
+
+					<select id="referenceType" onchange="refTypeChanged();">
+						<option value="bhA" selected>Website without author</option>
+						<option value="bhB">Websites with author or organisation</option>
+						<option value="bhC" >Document on website</option>
+					</select>
+					
+					<input type="text" placeholder="Title of Website" id="titleOfSite"></input>
+					<input type="text" placeholder="Title of Document" id="titleOfDoc"></input>
+					<input type="text" placeholder="Author or Organzation" id="authorOrg"></input>
+					<input type="text" placeholder="Year Created" id="yearCreated"></input>
+					
+					<div class="date">
+						<input type="text" placeholder="Date accessed" id="dateAccessed"></input>
+						<button type="button" onclick="pickDateAccessedToday();">Today</button>
+					</div>
+
+					<input type="text" placeholder="URL (https://domain.com/page)" id="referenceURL"></input>
+
 				</div>
-				
-
-				<input type="text" placeholder="URL (https://domain.com/page)" id="referenceURL"></input>
-				
-				<a class="button" onclick="formSubmission();" type="button">Create</a>
-				<a class="button" onclick="formClear();" type="button">Clear All</a>
-				<a class="button copyBtn" data-clipboard-target="#formattedReference" type="button">Copy to Clipboard</a>
-				<a class="button" type="button" href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to Bangor Guide</a>
-				
-			</fieldset>
 
 			</form>
 
-			<input type="text" placeholder="Completed Reference" id="formattedReference"></input>
+			<div class="controls">
+				<button onclick="formChanged();">Create</button>
+				<button onclick="formClear();">Clear All</button>
+				<button class="copyBtn" data-clipboard-target="#formattedReference">Copy to Clipboard</button>
+				<button href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to Bangor Guide</button>
+			</div>
 
-		</section>
+			<textarea placeholder="Completed Reference" id="formattedReference" rows="3"></textarea>
+
+		</div>
 
 	</body>
 

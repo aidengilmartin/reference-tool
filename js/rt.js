@@ -4,7 +4,7 @@ var sep = ". ";
 
 var selectedRefType = "bhA";
 
-function formSubmission() {
+function formChanged() {
 	collectDetails(); // Collect the users entry
 	selectReferenceType(); // Find out and store what reference type the user has selected
 	doReferencing(); // Create the reference and store it in a variable ready for display
@@ -53,7 +53,7 @@ function clipboardBtnInit() {
 }
 
 function refTypeChanged() { // When the type of reference has been changed
-	formSubmission(); // Format the reference again and display it
+	formChanged(); // Format the reference again and display it
 	adjustElements(); // Hide of display any elements as needed
 }
 
@@ -61,6 +61,7 @@ function formClear() {
 	if (confirm("Are you sure?") == true) {
 		document.getElementById("refForm").reset();
 		document.getElementById("formattedReference").value = "";
+		formLoad();
 	} else {
 		// Do nothing
 	} 
