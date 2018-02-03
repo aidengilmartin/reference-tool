@@ -1,4 +1,7 @@
-# Reference Tool
+# Reference Tool (DEV)
+
+DEV variant is a style overhaul using CSS Grid. Actual functionality is the same.
+
 A simple no frills website referencing tool.
 
 Currently only supports the Bangor variant of the Harvard referencing format.
