@@ -1,0 +1,29 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    padding: 2%;
+}
+input, button, select, textarea {
+    border: 1px solid #33bdbd;
+    border-radius: 2px;
+    padding: 1rem;
+}
+.page {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+}
+.attributes {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr;
+}
+.date {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 9fr 1fr;
+}
+.controls {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
