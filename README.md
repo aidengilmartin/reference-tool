@@ -1,10 +1,10 @@
-# Reference Tool (DEV)
+# Reference Tool
 
-DEV variant is a style overhaul using CSS Grid. Actual functionality is the same.
+A simple website referencing tool.
 
-A simple no frills website referencing tool.
+Uses clipboard.js and CSS Grid.
 
-Currently only supports the Bangor variant of the Harvard referencing format.
+Currently only supports the Bangor University variant of the Harvard referencing format.
 Formatting is based off the examples in the official referencing guide supplied by Bangor University.
 
 [Link to referencing guide](https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf)
