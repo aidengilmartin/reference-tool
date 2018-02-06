@@ -3,6 +3,7 @@
 <html lang="en">
 
 	<head>
+
 		<title>Reference Tool</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta charset="UTF-8">
@@ -14,11 +15,14 @@
 		<!-- JS -->
 		<script type="text/javascript" src="js/clipboard.min.js"></script> <!--https://github.com/zenorocha/clipboard.js-->
 		<script type="text/javascript" src="js/rt.js"></script> 	
+		
 	</head>
 
 	<body onload="formLoad();">
 
 		<div class="page">
+
+			<h1 class="title">Reference Tool</h1>
 
 			<form id="refForm" onchange="formChanged();">
 
@@ -50,7 +54,7 @@
 				<button onclick="formChanged();">Create</button>
 				<button onclick="formClear();">Clear All</button>
 				<button class="copyBtn" data-clipboard-target="#formattedReference">Copy to Clipboard</button>
-				<button href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to Bangor Guide</button>
+				<a class="linkButton" href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to Bangor Guide</a>
 			</div>
 
 			<textarea placeholder="Completed Reference" id="formattedReference" rows="3"></textarea>
