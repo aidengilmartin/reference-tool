@@ -18,7 +18,7 @@
 		
 	</head>
 
-	<body onload="formLoad();">
+	<body onload="formChanged();">
 
 		<div class="page">
 
@@ -28,7 +28,7 @@
 
 				<div class="attributes">
 
-					<select id="referenceType" onchange="refTypeChanged();">
+					<select id="referenceType" onchange="formChanged();">
 						<option value="bhA" selected>Website without author</option>
 						<option value="bhB">Websites with author or organisation</option>
 						<option value="bhC" >Document on website</option>
@@ -57,7 +57,13 @@
 				<a class="linkButton" href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to Bangor Guide</a>
 			</div>
 
-			<textarea placeholder="Completed Reference" id="formattedReference" rows="3"></textarea>
+			<div class="output">
+				<textarea placeholder="Completed Reference" id="formattedReference" rows="3"></textarea>
+				<select id="referenceFormat" onchange="formChanged();">
+					<option value="plain" selected>Plain Text</option>
+					<option value="md">Markdown</option>
+				</select>
+			</div>
 
 		</div>
 

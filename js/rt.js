@@ -1,12 +1,13 @@
-var authorOrg, yearCreated, dateAccessed, titleOfSite, titleOfDoc, referenceURL, finalReference;
+var authorOrg, yearCreated, dateAccessed, titleOfSite, titleOfDoc, referenceURL, finalRefPlain, finalRefMarkdown, selectedRefType, selectedRefFormat;
 
 var sep = ". ";
-
-var selectedRefType = "bhA";
 
 function formChanged() {
 	collectDetails(); // Collect the users entry
 	selectReferenceType(); // Find out and store what reference type the user has selected
+	selectReferenceFormat(); // Find out and store what reference format the user has selected
+	adjustElements(); //  Adjust the elements to only show what is needed
+	pickDateAccessedToday(); // Pick the current date automatically
 	doReferencing(); // Create the reference and store it in a variable ready for display
 	displayReference(); // Display the reference in a textarea
 	clipboardBtnInit(); // Get the copy to clipboard button ready for the user to click it
@@ -26,6 +27,11 @@ function selectReferenceType() {
 	selectedRefType = selector[selector.selectedIndex].value;
 }
 
+function selectReferenceFormat() {
+	var selector = document.getElementById("referenceFormat");
+	selectedRefFormat = selector[selector.selectedIndex].value;
+}
+
 function doReferencing() {
 	if (selectedRefType == "bhA") {
 		frBangorHarvardA();
@@ -39,52 +45,60 @@ function doReferencing() {
 }
 
 function displayReference() {
-	document.getElementById('formattedReference').innerHTML = finalReference;
+	if (selectedRefFormat == "plain") {
+		document.getElementById('formattedReference').innerHTML = finalRefPlain;
+	} else if (selectedRefFormat == "md") {
+		document.getElementById('formattedReference').innerHTML = finalRefMarkdown;
+	} else {
+		console.log("Issue with displayReference function");
+	}
 }
 
 function clipboardBtnInit() {
-	document.getElementById('formattedReference').value = finalReference;
-	var clip = new Clipboard('.copyBtn');
-	
-	clip.on('success', function(e) {
-		$('.copied').show();
-			$('.copied').fadeOut(1000);
-	});
-}
-
-function refTypeChanged() { // When the type of reference has been changed
-	formChanged(); // Format the reference again and display it
-	adjustElements(); // Hide of display any elements as needed
+	if (selectedRefFormat == "plain") {
+		document.getElementById('formattedReference').value = finalRefPlain;
+		var clip = new Clipboard('.copyBtn');
+		
+		clip.on('success', function(e) {
+			$('.copied').show();
+				$('.copied').fadeOut(1000);
+		});
+	} else if (selectedRefFormat == "md") {
+		document.getElementById('formattedReference').value = finalRefMarkdown;
+		var clip = new Clipboard('.copyBtn');
+		
+		clip.on('success', function(e) {
+			$('.copied').show();
+				$('.copied').fadeOut(1000);
+		});
+	}
 }
 
 function formClear() {
 	if (confirm("Are you sure?") == true) {
 		document.getElementById("refForm").reset();
 		document.getElementById("formattedReference").value = "";
-		formLoad();
 	} else {
 		// Do nothing
+		console.log("Chose not to clear the form");
 	} 
-}
-
-function formLoad() {
-	selectReferenceType();
-	pickDateAccessedToday();
-	adjustElements();
 }
 
 // Referencing formats
 
 function frBangorHarvardA() {
-	finalReference = titleOfSite + sep + yearCreated + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalRefPlain = titleOfSite + sep + yearCreated + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalRefMarkdown = titleOfSite + sep + yearCreated + ". [Online]. " + "Available at: " + "[" + referenceURL + "]" + "(" + referenceURL + ")" + ". Accessed " + dateAccessed + ".";
 }
 
 function frBangorHarvardB() {
-	finalReference = authorOrg + sep + yearCreated + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalRefPlain = authorOrg + sep + yearCreated + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalRefMarkdown = authorOrg + sep + yearCreated + sep + titleOfSite + ". [Online]. " + "Available at: " + "[" + referenceURL + "]" + ". Accessed " + dateAccessed + ".";
 }
 
 function frBangorHarvardC() {
-	finalReference = authorOrg + sep + yearCreated + sep + titleOfDoc + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalRefPlain = authorOrg + sep + yearCreated + sep + titleOfDoc + sep + titleOfSite + ". [Online]. " + "Available at: " + referenceURL + ". Accessed " + dateAccessed + ".";
+	finalRefMarkdown = authorOrg + sep + yearCreated + sep + titleOfDoc + sep + titleOfSite + ". [Online]. " + "Available at: " + "[" + referenceURL + "]" + ". Accessed " + dateAccessed + ".";
 }
 
 // Element showing and hiding
@@ -143,16 +157,6 @@ function showContent() { // Function for showing elements by ID such as "showCon
 }
 
 // Date Picker
-
-function pickYearCreated() {
-	window.alert("This feature is not yet available, sorry!");
-	console.log("Error: No date picker available");
-}
-
-function pickDateAccessed() {
-	window.alert("This feature is not yet available, sorry!");
-	console.log("Error: No date picker available");
-}
 
 function pickDateAccessedToday() {
 	var date = new Date();
