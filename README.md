@@ -1,6 +1,6 @@
 # Reference Tool
 
-A simple website referencing tool.
+Simple website referencing tool.
 
 Uses clipboard.js and CSS Grid.
 
