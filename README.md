@@ -2,7 +2,7 @@
 
 Simple website referencing tool.
 
-Uses clipboard.js and CSS Grid.
+Fully client side web tool using vanilla JavaScript.
 
 Currently only supports the Bangor University variant of the Harvard referencing format.
 Formatting is based off the examples in the official referencing guide supplied by Bangor University.

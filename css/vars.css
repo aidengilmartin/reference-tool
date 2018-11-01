@@ -1,0 +1,15 @@
+:root {
+    /* General Values */
+    --pageMax: 1000px; /* Maximum page width */
+    --ani-default: 0.3s;  /* Animate speed in seconds */
+    /* Colours */
+    --col-primary: rgb(219, 78, 78);
+    --col-primary-dark: rgb(231, 65, 65);
+    --col-second: grey;
+    --col-highlight: rgba(49, 49, 49, 0.034);
+    --txt-dark: black;
+    --txt-light: white;
+    --border: #ddd;
+    --positive: rgb(65, 231, 106);
+    --negative: rgb(231, 65, 65);
+}

@@ -1,72 +1,101 @@
 <!DOCTYPE HTML>
+<html>
+    <head>
+        <!--Meta-->
+        <title>Reference Tool</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#e74141" /> <!-- Chrome Custom Colours -->
+        <link rel="icon" type="image/png" href="img/favicon.png" />
+        <!--Style-->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+        <link rel="stylesheet" href="css/vars.css">
+        <link rel="stylesheet" href="css/base.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+    </head>
+    <body>
 
-<html lang="en">
+        <div class="banner" id="mainBanner">
+            <p><a href="index.html">REFERENCE TOOL</a></p>
+        </div>
 
-	<head>
+        <div class="container layout-grid inline">
 
-		<title>Reference Tool</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta charset="UTF-8">
-		<!-- Resources -->
-		<!-- CSS -->
-		<link href="css/normalize.css" rel="stylesheet" type="text/css">
-		<link href="css/style.css" rel="stylesheet" type="text/css">
-		<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-		<!-- JS -->
-		<script type="text/javascript" src="js/clipboard.min.js"></script> <!--https://github.com/zenorocha/clipboard.js-->
-		<script type="text/javascript" src="js/rt.js"></script> 	
-		
-	</head>
+            <div class="card" id="cardOne">
+                <div class="banner">
+                    <p class="title">Select Reference Format</p>
+                </div>
+                <div class="card-inside">
+                    <div id="stepOne" class="grid inline">
+                        <select id="referenceFormat">
+                            <option value="noChoice" disabled selected>Select your reference type</option>
+                            <option value="webA">Website without author</option>
+                            <option value="webB">Website with author/organization</option>
+                            <option value="webC">Document on website</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-	<body onload="formChanged();">
+            <div id="stepTwoContainer" style="display: none;" class="card">
 
-		<div class="page">
+                <div class="banner">
+                    <p class="title">Enter Reference Details</p>
+                </div>
 
-			<h1 class="title">Reference Tool</h1>
+                <div class="card-inside">
+                    
+                    <div id="stepTwo" class="grid inline">
+                        
+                        <form id="inputForm" class="grid inline">
+                            <input id="titleOfWebsite" style="display: none;" type="text" placeholder="Title of Website">
+                            <input id="titleOfDocument" style="display: none;" type="text" placeholder="Title of Document">
+                            <input id="author" style="display: none;" type="text" placeholder="Author or Organization">
+                            <input id="year" style="display: none;" type="text" placeholder="Year Created">
+                            <div id="accessed" style="display: none;" class="grid form">
+                                <input id="date" type="text" placeholder="Date accessed">
+                                <button class="button" type="button">Today</button>
+                            </div>
+                            <input id="url" style="display: none;" type="text" placeholder="URL (https://domain.com/page)">
+                        </form>
+                        
+                        <div id="controls" class="grid dynamic">
+                            <button class="button" id="create"><span>Create</span></button>
+                            <button class="button" id="clearAll">Clear All</button>
+                            <button class="button" id="clipboard">Copy to Clipboard</button>
+                            <a class="button" href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to reference guide</a>
+                        </div>
+    
+                        <div id="output" style="display: none;">
+                            <textarea id="outputText" placeholder="Completed reference" rows="2"></textarea>
+                        </div>
 
-			<form id="refForm" onchange="formChanged();">
+                    </div>
+                </div>
+            </div>
 
-				<div class="attributes">
+            <div class="card">
+                <div class="banner">
+                    <p class="title">History</p>
+                    <button class="button" id="historyClear">Clear History</button>
+                </div>
+                <div id="historyContainer">            
+                    <table class="market-table">
+                        <tbody id="historyTable">
+                            <!--JavaScript fills this in-->
+                        </tbody>
+                    </table>   
+                </div>
+            </div>
+            
+        </div>
 
-					<select id="referenceType" onchange="formChanged();">
-						<option value="bhA" selected>Website without author</option>
-						<option value="bhB">Websites with author or organisation</option>
-						<option value="bhC" >Document on website</option>
-					</select>
-					
-					<input type="text" placeholder="Title of Website" id="titleOfSite"></input>
-					<input type="text" placeholder="Title of Document" id="titleOfDoc"></input>
-					<input type="text" placeholder="Author or Organzation" id="authorOrg"></input>
-					<input type="text" placeholder="Year Created" id="yearCreated"></input>
-					
-					<div class="date">
-						<input type="text" placeholder="Date accessed" id="dateAccessed"></input>
-						<button type="button" onclick="pickDateAccessedToday();">Today</button>
-					</div>
+    </body>
+    <footer>
 
-					<input type="text" placeholder="URL (https://domain.com/page)" id="referenceURL"></input>
-
-				</div>
-
-			</form>
-
-			<div class="controls">
-				<button onclick="formChanged();">Create</button>
-				<button onclick="formClear();">Clear All</button>
-				<button class="copyBtn" data-clipboard-target="#formattedReference">Copy to Clipboard</button>
-				<a class="linkButton" href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to Bangor Guide</a>
-			</div>
-
-			<div class="output">
-				<textarea placeholder="Completed Reference" id="formattedReference" rows="1"></textarea>
-				<select id="referenceFormat" onchange="formChanged();">
-					<option value="plain" selected>Plain Text</option>
-					<option value="md">Markdown</option>
-				</select>
-			</div>
-
-		</div>
-
-	</body>
-
+    </footer>
+    <!--JS-->
+    <script src="js/main.js"></script>
+    <!--END JS-->
 </html>
