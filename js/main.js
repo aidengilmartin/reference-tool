@@ -3,33 +3,6 @@
 let currentFormat = null;
 let history = [];
 
-const formats = {
-    webA: {
-        name:"Website without author",
-        elements:["stepTwo", "titleOfWebsite", "year", "accessed", "url"],
-        creation: function() {
-            let output = (titleOfWebsite.value + ". " + year.value + ". [Online]. " + "Available at: " + url.value + ". Accessed " + date.value + ".");
-            return output;
-        },
-    },
-    webB: {
-        name:"Website with author or organisation",
-        elements:["stepTwo", "titleOfWebsite", "author", "year", "accessed", "url"],
-        creation: function() {
-            let output = (author.value + ". " + year.value + ". " + titleOfWebsite.value + ". [Online]. " + "Available at: " + url.value + ". Accessed " + date.value + ".");
-            return output;
-        },
-    },
-    webC: {
-        name:"Document on website",
-        elements:["stepTwo", "titleOfWebsite", "titleOfDocument", "author", "year", "accessed", "url"],
-        creation: function() {
-            let output = (author.value + ". " + year.value + ". " + titleOfDocument.value + ". " + titleOfWebsite.value + ". [Online]. " + "Available at: " + url.value + ". Accessed " + date.value + ".");
-            return output;
-        },
-    },
-}
-
 const historyfun = {
     display: {
         clear: function() {

@@ -11,6 +11,20 @@ window.onload = function() {
     }
     // Populate the history
     historyfun.display.fill();
+
+    // Populate format dropdown
+    Object.keys(formats).forEach(key => {
+        let option = document.createElement('option');
+        option.setAttribute("value", key);
+        option.text = formats[key].name;
+        formatSelect.appendChild(option);
+    });
+
+    // Create all input elements ready for showing and hiding
+    const form = document.getElementById('inputForm');
+    for (let i = 0; i < allElements.length; i++) {
+        form.appendChild(allElements[i]);
+    }
 };
 
 historyClearButton.addEventListener("click", historyfun.reset);
@@ -32,7 +46,7 @@ clipboardButton.addEventListener("click", function() {
 });
 
 createButton.addEventListener("click", function() {
-    let output = formats[currentFormat].creation();
+    let output = formats[currentFormat].create();
 
     // Set output text and clear inputs
     outputTextBox.value = output;
@@ -69,12 +83,12 @@ formatSelect.addEventListener("change", function() {
     if (currentFormat === null) {
         // No format selected
         currentFormat = choice;
-        showElements(formats[currentFormat].elements);
+        showElements(formats[currentFormat].inputs);
     } else if (currentFormat !== choice) {
         // Format has been changed
-        hideElements(formats[currentFormat].elements);
+        hideElements(formats[currentFormat].inputs);
         currentFormat = choice;
-        showElements(formats[currentFormat].elements);
+        showElements(formats[currentFormat].inputs);
     }
 
     showElements(["stepTwoContainer", "output"]); // Show any currently hidden elements

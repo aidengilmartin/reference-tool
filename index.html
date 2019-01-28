@@ -30,9 +30,6 @@
                     <div id="stepOne" class="grid inline">
                         <select id="referenceFormat">
                             <option value="noChoice" disabled selected>Select your reference type</option>
-                            <option value="webA">Website without author</option>
-                            <option value="webB">Website with author/organization</option>
-                            <option value="webC">Document on website</option>
                         </select>
                     </div>
                 </div>
@@ -49,15 +46,11 @@
                     <div id="stepTwo" class="grid inline">
                         
                         <form id="inputForm" class="grid inline">
-                            <input id="titleOfWebsite" style="display: none;" type="text" placeholder="Title of Website">
-                            <input id="titleOfDocument" style="display: none;" type="text" placeholder="Title of Document">
-                            <input id="author" style="display: none;" type="text" placeholder="Author or Organization">
-                            <input id="year" style="display: none;" type="text" placeholder="Year Created">
-                            <div id="accessed" style="display: none;" class="grid form">
+                            <!-- This is filled in by JS -->
+                            <div id="accessed" class="grid form">
                                 <input id="date" type="text" placeholder="Date accessed">
                                 <button id="dateToday" class="button" type="button">Today</button>
                             </div>
-                            <input id="url" style="display: none;" type="text" placeholder="URL (https://domain.com/page)">
                         </form>
                         
                         <div id="controls" class="grid dynamic">
@@ -97,6 +90,7 @@
     </footer>
     <!--JS-->
     <script src="js/elements.js"></script>
+    <script src="js/formats.js"></script>
     <script src="js/main.js"></script>
     <script src="js/events.js"></script>
     <!--END JS-->
