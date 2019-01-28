@@ -17,6 +17,7 @@ const historyfun = {
                 let td = document.createElement('td');
                 tbody.appendChild(tr);
                 td.textContent = entry;
+                tr.className += " " + 'animated fadeIn';
                 tr.appendChild(td);
             })
         }
@@ -27,14 +28,12 @@ const historyfun = {
             localStorage.setItem('history', JSON.stringify(history));
         },
         add: function(entry) {
-            if (entry == undefined) {
-                // Do nothing. The history just needs to be displayed ********** LOOK AT THIS MAY NOT BE NEEDED
-            } else if (history.length === 5) { // If the array is 5 entries long
+            if (history.length === 5) { // If there are 5 history entries
                 history.push(entry); // Insert the string into the array
                 history.splice(0, 1); // Delete the first item in the array (the oldest)
                 localStorage.setItem('history', JSON.stringify(history)); // Update localStorage
             } else {
-                history.push(entry); 
+                history.push(entry);  // Push entry to history
                 localStorage.setItem('history', JSON.stringify(history)); // Update localStorage
             };
         }

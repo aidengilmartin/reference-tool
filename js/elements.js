@@ -8,6 +8,7 @@ const historyClearButton = document.getElementById("historyClear");
 const clipboardButton = document.getElementById('clipboard');
 const clearAllButton = document.getElementById('clearAll');
 const dateTodayButton = document.getElementById('dateToday');
+const showExampleButton = document.getElementById('showExample');
 const dateInput = document.getElementById('date');
 const historyTable = document.getElementById('historyTable');
 
@@ -62,4 +63,5 @@ url.setAttribute("style", "display: none");
 url.setAttribute("type", "text");
 url.setAttribute("placeholder", "URL (https://domain.com/page)");
 
+/* Array of all elements for easy iteration */
 const allElements = [titleOfWebsite, titleOfDocument, videoTitle, author, creator, yearCreated, url];

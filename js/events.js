@@ -36,6 +36,7 @@ clearAllButton.addEventListener("click", function() {
 
 clipboardButton.addEventListener("click", function() {
     let text = outputTextBox.value;
+    
     try {
         navigator.clipboard.writeText(text).then;
         alert("Output is now in clipboard ready to paste.");
@@ -47,12 +48,8 @@ clipboardButton.addEventListener("click", function() {
 
 createButton.addEventListener("click", function() {
     let output = formats[currentFormat].create();
-
-    // Set output text and clear inputs
     outputTextBox.value = output;
     clearInputs();
-
-    // Add output to history
     historyfun.update(output);
 });
 
@@ -77,25 +74,45 @@ dateTodayButton.addEventListener("click", function() {
     dateInput.value = output;
 });
 
+showExampleButton.addEventListener("click", function() {
+    const div = document.getElementById("example");
+    if (currentFormat == null) {
+        alert("Choose a reference type to view examples.");
+    }
+    else if (div.getAttribute("style") == "display: none;") {
+        // Div is hidden
+        showElements(["example"]);
+    } else {
+        // Div is visible
+        hideElements(["example"]);
+    }
+});
+
 formatSelect.addEventListener("change", function() {
     let choice = formatSelect[formatSelect.selectedIndex].value;
-    
+    const exampleTitle = document.getElementById("referenceExampleTitle");
+    const exampleText = document.getElementById("referenceExampleText");
+
     if (currentFormat === null) {
         // No format selected
         currentFormat = choice;
         showElements(formats[currentFormat].inputs);
+        // Update example text & title
+        exampleTitle.innerHTML = (formats[currentFormat].name + " (Example)");
+        exampleText.innerHTML = (formats[currentFormat].example);
     } else if (currentFormat !== choice) {
         // Format has been changed
         hideElements(formats[currentFormat].inputs);
         currentFormat = choice;
         showElements(formats[currentFormat].inputs);
+        // Update example text & title
+        exampleTitle.innerHTML = (formats[currentFormat].name + " (Example)");
+        exampleText.innerHTML = (formats[currentFormat].example);
     }
 
-    showElements(["stepTwoContainer", "output"]); // Show any currently hidden elements
+    showElements(["cardTwo", "output"]); // Show any elements hidden by default
     
-    let target = document.getElementById('stepTwoContainer');
+    // Scroll the page to fit form on screen
+    let target = document.getElementById('cardTwo');
     target.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
-
-    // let firstInput = document.getElementById('inputForm').firstElementChild; ************** THIS INTERFERERS WITH THE SCROLL TO ELEMENT
-    // firstInput.focus();
 });

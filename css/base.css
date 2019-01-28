@@ -1,7 +1,7 @@
 * {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: 'Nunito Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
 }
 body {
@@ -28,6 +28,9 @@ body {
 }
 .inline {
     grid-template-columns: 1fr;
+}
+.twoxtwo {
+    grid-template-columns: 4fr 1fr;
 }
 .form {
     grid-template-columns: 4fr 1fr;
