@@ -13,7 +13,7 @@ const formats = {
     webB: {
         name:"Website with author or organization",
         inputs:["titleOfWebsite", "author", "yearCreated", "url"],
-        example:"BBC. 2019. US files charges against China's Huawei and CFO Meng Wanzhou. [Online]. Available at: https://www.bbc.co.uk/news/world-us-canada-47036515. Accessed 28th January 2019.",
+        example:"Farivar, C. 2019. Man who stole $5M in cryptocurrency via SIM swap pleads guilty. [Online]. Available at: https://arstechnica.com/tech-policy/2019/02/man-who-stole-5m-in-cryptocurrency-via-sim-swap-pleads-guilty/. Accessed 4th February 2019.",
         create: function() {
             let output = (author.value + ". " + yearCreated.value + ". " + titleOfWebsite.value + ". [Online]. " + "Available at: " + url.value + ". Accessed " + date.value + ".");
             return output;
