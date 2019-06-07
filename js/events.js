@@ -10,7 +10,6 @@ window.onload = function () {
             // Key does exist and is not empty. Retrieve the contents from localStorage and add the contents to the array.
             history = JSON.parse(localStorage.getItem('history'));
             showElements(["historyCard", "historyTable"]);
-            console.log("test");
         }
     }
     // Populate the history
@@ -31,11 +30,10 @@ window.onload = function () {
     }
 };
 
-historyClearButton.addEventListener("click", historyfun.reset);
-
-historyCard.addEventListener("click", function () {
-    historyfun.reset;
-    hideElements(["historyCard", "historyTable"]);
+historyClearButton.addEventListener("click", function() {
+    console.log("History Clear Button")
+    hideElements(["historyCard"]);
+    historyfun.reset();
 });
 
 clearAllButton.addEventListener("click", function () {
