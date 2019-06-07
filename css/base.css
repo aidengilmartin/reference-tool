@@ -45,9 +45,15 @@ body {
     padding: 1rem;
     width: 100%;
 }
-.banner p {
+.banner .title {
     font-size: 2em;
     font-weight: 700;
+}
+.banner a {
+    font-weight: 700;
+}
+.banner a:hover {
+    text-decoration: underline;
 }
 /* END OF BANNER */
 

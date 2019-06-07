@@ -1,109 +1,121 @@
 <!DOCTYPE HTML>
 <html>
-    <head>
-        <!--Meta-->
-        <title>Reference Tool</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="theme-color" content="#e74141" /> <!-- Chrome Custom Colours -->
-        <link rel="icon" type="image/png" href="img/favicon.png" />
-        <!--Style-->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
-        <link rel="stylesheet" href="css/vars.css">
-        <link rel="stylesheet" href="css/base.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans"> 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-    </head>
-    <body>
 
-        <div class="banner" id="mainBanner">
-            <p><a href="index.html">Reference Tool</a></p>
-        </div>
+<head>
+    <!--Meta-->
+    <title>Reference Tool</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#e74141" /> <!-- Chrome Custom Colours -->
+    <link rel="icon" type="image/png" href="img/favicon.png" />
+    <!--Style-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css">
+    <link rel="stylesheet" href="css/vars.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+</head>
 
-        <div class="container layout-grid inline">
+<body>
 
-            <div class="card" id="cardOne">
+    <div class="banner" id="mainBanner">
+        <p class="title"><a href="index.html">Reference Tool</a></p>
+    </div>
 
-                <div class="banner">
-                    <p class="title">Select Reference Format</p>
-                </div>
+    <div class="container layout-grid inline">
 
-                <div class="card-inside">
-                    <div id="stepOne" class="grid inline">
-                        <div class="grid twoxtwo">
-                            <select id="referenceFormat">
-                                <option value="noChoice" disabled selected>Select your reference type</option>
-                                <!-- Options appended by JS -->
-                            </select>
-                            <button id="showExample" type="button" class="button">Example</button>
-                        </div>
+        <div class="card" id="cardOne">
 
-                        <div id="example" style="display: none;">
-                            <h2 id="referenceExampleTitle">Example</h2>
-                            <p id="referenceExampleText">Title of Website. 2016. [Online]. Available at: https://domain.com. Accessed 28th January 2019.</p>
-                        </div>
+            <div class="banner">
+                <p class="title">Select Reference Format</p>
+            </div>
+
+            <div class="card-inside">
+                <div id="stepOne" class="grid inline">
+                    <div class="grid twoxtwo">
+                        <select id="referenceFormat">
+                            <option value="noChoice" disabled selected>Select your reference type</option>
+                            <!-- Options appended by JS -->
+                        </select>
+                        <button id="showExample" type="button" class="button">Example</button>
+                    </div>
+
+                    <div id="example" style="display: none;">
+                        <h2 id="referenceExampleTitle">Example</h2>
+                        <p id="referenceExampleText">Title of Website. 2016. [Online]. Available at: https://domain.com.
+                            Accessed 28th January 2019.</p>
                     </div>
                 </div>
-
             </div>
 
-            <div id="cardTwo" style="display: none;" class="card">
-
-                <div class="banner">
-                    <p class="title">Enter Reference Details</p>
-                </div>
-
-                <div class="card-inside">
-                    <div id="stepTwo" class="grid inline">
-
-                        <form id="inputForm" class="grid inline">
-                            <div id="accessed" class="grid form">
-                                <input id="date" type="text" placeholder="Date accessed">
-                                <button id="dateToday" class="button" type="button">Today</button>
-                            </div>
-                            <!-- Inputs appended by JS -->
-                        </form> 
-
-                        <div id="controls" class="grid dynamic">
-                            <button class="button" id="create"><span>Create</span></button>
-                            <button class="button" id="clearAll">Clear All</button>
-                            <button class="button" id="clipboard">Copy to Clipboard</button>
-                            <a class="button" href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to reference guide</a>
-                        </div>
-
-                        <div id="output" style="display: none;">
-                            <textarea id="outputText" placeholder="Completed reference" rows="2"></textarea>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="card">
-
-                <div class="banner grid twoxtwo">
-                    <p class="title">History</p>
-                    <button class="button" id="historyClear">Clear History</button>
-                </div>
-
-                <div id="historyContainer">            
-                    <table class="market-table">
-                        <tbody id="historyTable">
-                            <!-- Table filled in by JS -->
-                        </tbody>
-                    </table>   
-                </div>
-
-            </div>
-            
         </div>
 
-    </body>
-    <!--JS-->
-    <script src="js/elements.js"></script>
-    <script src="js/formats.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/events.js"></script>
-    <!--END JS-->
+        <div id="cardTwo" style="display: none;" class="card">
+
+            <div class="banner">
+                <p class="title">Enter Reference Details</p>
+            </div>
+
+            <div class="card-inside">
+                <div id="stepTwo" class="grid inline">
+
+                    <form id="inputForm" class="grid inline">
+                        <div id="accessed" class="grid form">
+                            <input id="date" type="text" placeholder="Date accessed">
+                            <button id="dateToday" class="button" type="button">Today</button>
+                        </div>
+                        <!-- Inputs appended by JS -->
+                    </form>
+
+                    <div id="controls" class="grid dynamic">
+                        <button class="button" id="create"><span>Create</span></button>
+                        <button class="button" id="clearAll">Clear All</button>
+                        <button class="button" id="clipboard">Copy to Clipboard</button>
+                        <a class="button"
+                            href="https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf">Link to
+                            reference guide</a>
+                    </div>
+
+                    <div id="output" style="display: none;">
+                        <textarea id="outputText" placeholder="Completed reference" rows="2"></textarea>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card" style="display: none" id="historyCard">
+
+            <div class="banner grid twoxtwo">
+                <p class="title">History</p>
+                <button class="button" id="historyClear">Clear History</button>
+            </div>
+
+            <div id="historyContainer">
+                <table class="market-table">
+                    <tbody id="historyTable">
+                        <!-- Table filled in by JS -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <div class="banner">
+                <p class="oss">This is an open source tool. Find it on <a href="https://github.com/aidengilmartin/referencetool">GitHub</a></p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<!--JS-->
+<script src="js/elements.js"></script>
+<script src="js/formats.js"></script>
+<script src="js/main.js"></script>
+<script src="js/events.js"></script>
+<!--END JS-->
+
 </html>

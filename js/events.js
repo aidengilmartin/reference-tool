@@ -1,13 +1,17 @@
 "use strict"
 
-window.onload = function() {
+window.onload = function () {
     // Get history from localStorage (if exists)
     if (localStorage.getItem('history') === null) {
         // Key doesn't exist. Create an empty array, make it a JSON string, and add that to localStorage.
         localStorage.setItem('history', JSON.stringify([]));
     } else {
-        // Key does exist. Retrieve the contents from localStorage and add the contents to the array.
-        history = JSON.parse(localStorage.getItem('history'));
+        if (localStorage.getItem('history') != "[]") {
+            // Key does exist and is not empty. Retrieve the contents from localStorage and add the contents to the array.
+            history = JSON.parse(localStorage.getItem('history'));
+            showElements(["historyCard", "historyTable"]);
+            console.log("test");
+        }
     }
     // Populate the history
     historyfun.display.fill();
@@ -29,52 +33,58 @@ window.onload = function() {
 
 historyClearButton.addEventListener("click", historyfun.reset);
 
-clearAllButton.addEventListener("click", function() {
+historyCard.addEventListener("click", function () {
+    historyfun.reset;
+    hideElements(["historyCard", "historyTable"]);
+});
+
+clearAllButton.addEventListener("click", function () {
     clearInputs();
     outputTextBox.value = "";
 });
 
-clipboardButton.addEventListener("click", function() {
+clipboardButton.addEventListener("click", function () {
     let text = outputTextBox.value;
-    
+
     try {
         navigator.clipboard.writeText(text).then;
         alert("Output is now in clipboard ready to paste.");
     } catch {
         alert("RT can't access your clipboard.\nCopy the output manually.");
     }
-    
+
 });
 
-createButton.addEventListener("click", function() {
+createButton.addEventListener("click", function () {
     let output = formats[currentFormat].create();
     outputTextBox.value = output;
     clearInputs();
     historyfun.update(output);
+    showElements(["historyCard", "historyTable"]);
 });
 
-dateTodayButton.addEventListener("click", function() {
-    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+dateTodayButton.addEventListener("click", function () {
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let date = new Date();
     let day = date.getDate();
-	let month = months[date.getMonth()];
+    let month = months[date.getMonth()];
     let year = date.getFullYear();
-    
-	function nth(d) {
-		if(d>3 && d<21) return 'th';
-		switch (d % 10) {
-			case 1:  return "st";
-			case 2:  return "nd";
-			case 3:  return "rd";
-			default: return "th";
-		}
+
+    function nth(d) {
+        if (d > 3 && d < 21) return 'th';
+        switch (d % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
     };
-    
+
     let output = (day + nth(day) + " " + month + " " + year);
     dateInput.value = output;
 });
 
-showExampleButton.addEventListener("click", function() {
+showExampleButton.addEventListener("click", function () {
     const div = document.getElementById("example");
     if (currentFormat == null) {
         alert("Choose a reference type to view examples.");
@@ -88,7 +98,7 @@ showExampleButton.addEventListener("click", function() {
     }
 });
 
-formatSelect.addEventListener("change", function() {
+formatSelect.addEventListener("change", function () {
     let choice = formatSelect[formatSelect.selectedIndex].value;
     const exampleTitle = document.getElementById("referenceExampleTitle");
     const exampleText = document.getElementById("referenceExampleText");
@@ -111,8 +121,8 @@ formatSelect.addEventListener("change", function() {
     }
 
     showElements(["cardTwo", "output"]); // Show any elements hidden by default
-    
+
     // Scroll the page to fit form on screen
     let target = document.getElementById('cardTwo');
-    target.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    target.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 });

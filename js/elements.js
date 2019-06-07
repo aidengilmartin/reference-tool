@@ -11,6 +11,7 @@ const dateTodayButton = document.getElementById('dateToday');
 const showExampleButton = document.getElementById('showExample');
 const dateInput = document.getElementById('date');
 const historyTable = document.getElementById('historyTable');
+const historyCard = document.getElementById('historyCard');
 
 /* Input Elements */
 
