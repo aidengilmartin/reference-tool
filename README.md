@@ -1,15 +1,11 @@
 # Reference Tool
 
-Simple website referencing tool.
+Simple academic referencing tool for online resources.
 
-Fully client side web tool using vanilla JavaScript.
-
-Currently only supports the Bangor University variant of the Harvard referencing format.
+This was initially created for personal use and supports the Bangor University variant of the Harvard referencing format.
 Formatting is based off the examples in the official referencing guide supplied by Bangor University.
 
 [Link to referencing guide](https://www.bangor.ac.uk/library/help/documents/harvardreferencingguide.pdf)
-
-[Link to demo on GitHub Pages](https://aidengilmartin.github.io/referencetool/)
 
 ## Planned features
 - Copy history entry to clipboard
