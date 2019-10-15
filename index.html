@@ -18,21 +18,21 @@
 
 <body>
 
-    <div class="banner" id="mainBanner">
-        <p class="title"><a href="index.html">Reference Tool</a></p>
+    <div class="page-header">
+        <h1 class="title">Reference Tool</h1>
     </div>
 
     <div class="container layout-grid inline">
 
         <div class="card" id="cardOne">
 
-            <div class="banner">
+            <div class="card-header">
                 <p class="title">Select Reference Format</p>
             </div>
 
-            <div class="card-inside">
-                <div id="stepOne" class="grid inline">
-                    <div class="grid twoxtwo">
+            <div class="card-body">
+                <div id="stepOne" class="grid grid-inline">
+                    <div class="grid grid-twoxtwo">
                         <select id="referenceFormat">
                             <option value="noChoice" disabled selected>Select your reference type</option>
                             <!-- Options appended by JS -->
@@ -52,22 +52,22 @@
 
         <div id="cardTwo" style="display: none;" class="card">
 
-            <div class="banner">
+            <div class="card-header">
                 <p class="title">Enter Reference Details</p>
             </div>
 
-            <div class="card-inside">
-                <div id="stepTwo" class="grid inline">
+            <div class="card-body">
+                <div id="stepTwo" class="grid grid-inline">
 
-                    <form id="inputForm" class="grid inline">
-                        <div id="accessed" class="grid form">
+                    <form id="inputForm" class="grid grid-inline">
+                        <div id="accessed" class="grid grid-form">
                             <input id="date" type="text" placeholder="Date accessed">
                             <button id="dateToday" class="button" type="button">Today</button>
                         </div>
                         <!-- Inputs appended by JS -->
                     </form>
 
-                    <div id="controls" class="grid dynamic">
+                    <div id="controls" class="grid grid-dynamic">
                         <button class="button" id="create"><span>Create</span></button>
                         <button class="button" id="clearAll">Clear All</button>
                         <button class="button" id="clipboard">Copy to Clipboard</button>
@@ -87,13 +87,13 @@
 
         <div class="card" style="display: none" id="historyCard">
 
-            <div class="banner grid twoxtwo">
+            <div class="card-header grid grid-twoxtwo">
                 <p class="title">History</p>
                 <button class="button" id="historyClear">Clear History</button>
             </div>
 
             <div id="historyContainer">
-                <table class="market-table">
+                <table class="history-table">
                     <tbody id="historyTable">
                         <!-- Table filled in by JS -->
                     </tbody>
@@ -103,8 +103,9 @@
         </div>
 
         <div class="card">
-            <div class="banner">
-                <p class="oss">This is an open source tool. Find it on <a href="https://github.com/aidengilmartin/referencetool">GitHub</a></p>
+            <div class="card-header" style="border-radius: 10px;">
+                <p class="title">This is an open source tool. Find it on <a
+                        href="https://github.com/aidengilmartin/referencetool">GitHub</a></p>
             </div>
         </div>
 

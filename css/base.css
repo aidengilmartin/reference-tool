@@ -1,211 +1,220 @@
 * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
     font-family: 'Open Sans', sans-serif;
     box-sizing: border-box;
 }
+
+/* Firefox Fixes */
+
+@-moz-document url-prefix() {
+    /* https://gist.github.com/joaocunha/6273016 */
+    select {
+        -moz-appearance: none;
+        text-indent: 0.01px;
+        text-overflow: "";
+    }
+}
+
+select:-moz-focusring {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+}
+
+select {
+    background: transparent;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+/* END - Firefox Fixes */
+
 body {
     line-height: 1.4;
 }
 
 .container {
     padding: 1rem;
-    max-width: var(--pageMax);
+    max-width: var(--page-max-width);
     margin: 0 auto;
     position: relative;
 }
 
-/* Grids */
 .grid {
     display: grid;
     grid-gap: 1.25rem;
 }
-.layout-grid {
-    display: grid;
-}
-.dynamic {
+
+.grid-dynamic {
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
-.inline {
+
+.grid-inline {
     grid-template-columns: 1fr;
 }
-.twoxtwo {
-    grid-template-columns: 4fr 1fr;
-}
-.form {
-    grid-template-columns: 4fr 1fr;
-}
-/* END OF GRIDS */
 
-/* Banner */
-.banner {
+.grid-twoxtwo {
+    grid-template-columns: 4fr 1fr;
+}
+
+.grid-form {
+    grid-template-columns: 4fr 1fr;
+}
+
+.title {
     text-align: center;
     color: var(--txt-light);
-    background-color: var(--col-primary);
-    padding: 1rem;
-    width: 100%;
 }
-.banner .title {
-    font-size: 2em;
-    font-weight: 700;
-}
-.banner a {
-    font-weight: 700;
-}
-.banner a:hover {
-    text-decoration: underline;
-}
-/* END OF BANNER */
 
-/* Card */
+.page-header {
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 0px 0px 10px 10px;
+    width: calc(var(--page-max-width) + 10%);
+    background-color: var(--col-primary);
+}
+
+.card-header .title {
+    font-size: 1.25rem;
+}
+
 .card {
-    position: relative;
     margin: 1rem;
-    transition: all var(--ani-default) ease;
+    border: none;
+    border-radius: 10px;
+    background-color: #f6f5f4;
+    transition: all var(--animation-speed) ease;
 }
-.card-inside {
-    padding: 2rem;
-    border: solid var(--border);
-    border-width: 0 1px 1px 1px;
-}
+
 .card:hover {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
-.card .banner {
-    padding: 0.35rem;
+
+.card-header {
+    border-radius: 10px 10px 0px 0px;
+    padding: 0.5rem;
+    width: 100%;
     background-color: var(--col-primary);
 }
-.card .title {
-    color: var(--txt-light);
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: 700;
-}
-/* END OF CARD */
 
-/* Interactive Elements */
+.card-body {
+    border-radius: 0px 0px 10px 10px;
+    padding: 1.75rem;
+    border: solid var(--border);
+    border-width: 0 1px 1px 1px;
+}
+
+input, textarea, select, .button {
+    border-radius: 5px;
+}
+
 input, select, textarea {
     padding: 1rem;
     border: 1px solid var(--border);
-    transition: all var(--ani-default) ease;
-    outline: none;
-    width: auto;
+    transition: all var(--animation-speed) ease;
+    background-color: #ffffff;
 }
+
 textarea {
     width: 100%;
     resize: none;
 }
-input:hover, select:hover, textarea:hover, input:focus, select:focus{
+
+input:hover, select:hover, textarea:hover {
     border: 1px solid var(--col-primary);
 }
-input:hover, select:hover, textarea:hover{
+
+input:focus, select:focus {
+    border: 1px solid var(--col-primary);
     box-shadow: 1px 3px 16px rgba(0, 0, 0, 0.1);
 }
-input[type='number'] {  /* For Firefox */
-    -moz-appearance:textfield;
-}
-input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { /* Webkit browsers (Chrome) */
-    -webkit-appearance: none;
-    margin: 0;
-}
+
 a {
     text-decoration: none;
     color: var(--txt-light);
+    font-weight: bold;
 }
 
 .button {
     padding: 1rem;
-    border: 1px solid var(--border);
-    transition: all .3s ease;
-    background-color: var(--col-primary);
+    background-color: var(--col-primary-dark);
     border: none;
     color: var(--txt-light);
     cursor: pointer;
     outline: 0;
     text-align: center;
 }
+
 .button:hover {
     box-shadow: 1px 3px 16px rgba(0, 0, 0, 0.1);
     font-weight: 700;
-} 
+}
+
 .button span {
     position: relative;
-    transition: var(--ani-default);
+    transition: var(--animation-speed);
 }
+
 .button span:after {
     content: '+';
     position: absolute;
     opacity: 0;
     right: 20px;
-    transition: var(--ani-default);
+    transition: var(--animation-speed);
 }
+
 .button:hover span {
     padding-right: 25px;
 }
+
 .button:hover span:after {
     opacity: 1;
     right: 0;
 }
-/* END OF INTERACTIVE ELEMENTS */
 
-/* Tables */
-table {
-    width: 100%;
-}
-table, th, td {
-    border-collapse: collapse;
-}
 th, td, tr {
     text-align: left;
     padding: 1rem;
 }
-td {
-    border-bottom: 1px solid var(--border);
-}
-thead tr {
-    background-color: var(--col-primary);
-    color: var(--txt-light);
-    box-shadow: 1px 3px 16px rgba(0, 0, 0, 0.1);
-}
+
 tbody tr {
-    transition: all var(--ani-default) ease-in-out;
+    transition: all var(--animation-speed) ease-in-out;
 }
-tbody tr:hover{
-    background-color: var(--col-highlight);
-    box-shadow: 2px 4px 14px rgba(0, 0, 0, 0.1);
-}
-.market-table {
+
+.history-table {
     width: 100%;
-}
-.market-table tbody {
+    border-radius: 0px 0px 10px 10px;
     border: solid var(--border);
     border-width: 0 1px 1px 1px;
 }
-.positive {
-    color: var(--positive);
-}
-.negative {
-    color: var(--negative);
-}
-/* END OF TABLES */
 
 /* Scrollbar */
+
 ::-webkit-scrollbar {
     width: 0.5rem;
 }
+
 ::-webkit-scrollbar-track {
-    background: var(--border); 
+    background: var(--border);
 }
+
 ::-webkit-scrollbar-thumb {
-    background: var(--col-primary); 
+    background: var(--col-primary);
 }
+
 ::-webkit-scrollbar-thumb:hover {
-    background: #555; 
+    background: #555;
 }
-/* END OF SCROLLBAR */
 
 /* Mobile Device Tweaks */
+
 @media screen and (max-width: 800px) {
+    .page-header, .card, .card-header, .card-body {
+        border-radius: 0px !important;
+    }
+    .page-title {
+        width: 100%;
+    }
     .container {
         padding: 0;
     }
@@ -216,4 +225,3 @@ tbody tr:hover{
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
     }
 }
-/* END OF MOBILE DEVICE TWEAKS */
